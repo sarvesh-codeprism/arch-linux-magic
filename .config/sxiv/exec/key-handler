@@ -1,0 +1,11 @@
+#!/bin/sh
+
+while read file
+do
+  case "$1" in
+    "w") set_wallpaper $file ;; 
+    "d") rm $file;; 
+  esac 
+done
+
+
