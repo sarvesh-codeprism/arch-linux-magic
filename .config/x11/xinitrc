@@ -2,7 +2,9 @@
 
 set_wallpaper &
 dwm_bar &
-xcompmgr &
+# xcompmgr &
+picom --config ~/.config/picom.conf &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 dunst &
 xset r rate 300 50 &
 sxhkd &
