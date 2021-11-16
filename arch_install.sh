@@ -10,7 +10,7 @@ read drive
 cfdisk $drive 
 echo "Enter the linux partition: "
 read partition
-mkfs.ext4 $partition 
+mkfs.btrfs $partition 
 read -p "Did you also create efi partition? [y/n]" answer
 if [[ $answer = y ]] ; then
   echo "Enter EFI partition: "
@@ -56,9 +56,9 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      fzf man-db xwallpaper python-pywal youtube-dl unclutter xclip maim \
      zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
-     vim emacs arc-gtk-theme rsync firefox dash \
-     xcompmgr libnotify dunst slock jq \
-     dhcpcd networkmanager rsync pamixer
+     neovim arc-gtk-theme rsync brave-bin dash \
+     picom libnotify dunst slock jq noisetorch-git \
+     dhcpcd networkmanager rsync pamixer pavucontrol
 
 systemctl enable NetworkManager.service 
 rm /bin/sh
