@@ -1,5 +1,9 @@
 # Arch Linux Magic
 
+| Screenshot 1 | Screenshot 2|
+|---|---|
+|![Screenshot 1](./ss/ss-1.jpg) | ![Screenshot 2](./ss/ss-2.jpg) |
+
 ### Step 1
 ```sh
 curl -LO git.io/arch-linux-magic
