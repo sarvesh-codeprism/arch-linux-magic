@@ -57,7 +57,7 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
      neovim arc-gtk-theme rsync brave-bin dash \
-     picom libnotify dunst slock jq noisetorch-git \
+     picom libnotify dunst slock jq noisetorch-git polkit-gnome \
      dhcpcd networkmanager rsync pamixer pavucontrol
 
 systemctl enable NetworkManager.service 
