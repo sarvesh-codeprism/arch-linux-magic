@@ -10,7 +10,7 @@ read drive
 cfdisk $drive 
 echo "Enter the linux partition: "
 read partition
-mkfs.btrfs $partition 
+mkfs.ext4 $partition 
 read -p "Did you also create efi partition? [y/n]" answer
 if [[ $answer = y ]] ; then
   echo "Enter EFI partition: "
@@ -56,9 +56,9 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      fzf man-db xwallpaper python-pywal youtube-dl unclutter xclip maim \
      zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
-     neovim arc-gtk-theme rsync brave-bin dash \
-     picom libnotify dunst slock jq noisetorch-git polkit-gnome \
-     dhcpcd networkmanager rsync pamixer pavucontrol
+     vim emacs arc-gtk-theme rsync firefox dash \
+     xcompmgr libnotify dunst slock jq \
+     dhcpcd networkmanager rsync pamixer
 
 systemctl enable NetworkManager.service 
 rm /bin/sh
@@ -74,7 +74,7 @@ sed '1,/^#part3$/d' arch_install2.sh > $ai3_path
 chown $username:$username $ai3_path
 chmod +x $ai3_path
 su -c $ai3_path -s /bin/sh $username
-exit 
+exit
 
 #part3
 cd $HOME
