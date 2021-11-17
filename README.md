@@ -21,7 +21,7 @@ bash arch_install.sh
 
 `
 Note: You must create two partitions, 
-one for boot about 512MB and one for root
+one for EFI about 512MB and one for root
 `
 
 <hr>
