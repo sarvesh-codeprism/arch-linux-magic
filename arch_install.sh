@@ -97,7 +97,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 mv ~/.oh-my-zsh ~/.config/zsh/oh-my-zsh
 rm ~/.zshrc ~/.zsh_history
-mkdir -p ~/dl ~/vids ~/music ~/dox ~/code ~/pix/{ss,wall} ~/.cache/zsh
+mkdir -p ~/dl ~/vids ~/music ~/dox ~/code ~/pix/ss ~/pix/wall ~/.cache/zsh
 touch ~/.cache/zsh/history
 cd ~/pix/wall
 curl -LO https://raw.githubusercontent.com/sarveshspatil111/arch-linux-magic/master/wall/1.png
