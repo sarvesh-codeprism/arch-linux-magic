@@ -10,7 +10,7 @@ read drive
 cfdisk $drive 
 echo "Enter the linux partition: "
 read partition
-mkfs.btrfs $partition 
+mkfs.btrfs $partition -f
 read -p "Did you also create efi partition? [y/n]" answer
 if [[ $answer = y ]] ; then
   echo "Enter EFI partition: "
@@ -57,7 +57,7 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
      vim emacs arc-gtk-theme rsync firefox dash \
-     xcompmgr libnotify dunst slock jq \
+     picom polkit-gnome libnotify dunst slock jq \
      dhcpcd networkmanager rsync pamixer
 
 systemctl enable NetworkManager.service 
@@ -96,8 +96,7 @@ ln -s ~/.config/shell/profile .zprofile
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 mv ~/.oh-my-zsh ~/.config/zsh/oh-my-zsh
 rm ~/.zshrc ~/.zsh_history
-mkdir -p ~/dl ~/vids ~/music ~/dox ~/code ~/pix/ss ~/.cache/zsh
+mkdir -p ~/dl ~/vids ~/music ~/dox ~/code ~/pix/{ss wall} ~/.cache/zsh
 touch ~/.cache/zsh/history
-alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-dots config --local status.showUntrackedFiles no
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 exit
