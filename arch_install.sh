@@ -45,7 +45,7 @@ echo "Enter EFI partition: "
 read efipartition
 mkdir /boot/efi
 mount $efipartition /boot/efi 
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ARCH
 sed -i 's/quiet/pci=noaer/g' /etc/default/grub
 sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -94,9 +94,13 @@ baph -inN libxft-bgra-git
 ln -s ~/.config/x11/xinitrc .xinitrc
 ln -s ~/.config/shell/profile .zprofile
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 mv ~/.oh-my-zsh ~/.config/zsh/oh-my-zsh
 rm ~/.zshrc ~/.zsh_history
-mkdir -p ~/dl ~/vids ~/music ~/dox ~/code ~/pix/{ss wall} ~/.cache/zsh
+mkdir -p ~/dl ~/vids ~/music ~/dox ~/code ~/pix/{ss,wall} ~/.cache/zsh
 touch ~/.cache/zsh/history
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+cd ~/pix/wall
+curl -LO https://raw.githubusercontent.com/sarveshspatil111/arch-linux-magic/master/wall/1.png
+curl -LO https://raw.githubusercontent.com/sarveshspatil111/arch-linux-magic/master/wall/2.png
+curl -LO https://raw.githubusercontent.com/sarveshspatil111/arch-linux-magic/master/wall/3.png
 exit
