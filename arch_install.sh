@@ -56,7 +56,7 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      fzf man-db xwallpaper python-pywal youtube-dl unclutter xclip maim \
      zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
-     vim emacs arc-gtk-theme rsync firefox dash \
+     vim arc-gtk-theme rsync firefox dash \
      picom polkit-gnome libnotify dunst slock jq \
      dhcpcd networkmanager rsync pamixer
 
@@ -103,4 +103,5 @@ cd ~/pix/wall
 curl -LO https://raw.githubusercontent.com/sarveshspatil111/arch-linux-magic/master/wall/1.png
 curl -LO https://raw.githubusercontent.com/sarveshspatil111/arch-linux-magic/master/wall/2.png
 curl -LO https://raw.githubusercontent.com/sarveshspatil111/arch-linux-magic/master/wall/3.png
+curl -LO https://raw.githubusercontent.com/sarveshspatil111/arch-linux-magic/master/wall/4.png
 exit
