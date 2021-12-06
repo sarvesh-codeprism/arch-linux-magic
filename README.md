@@ -28,5 +28,5 @@ one for EFI about 512MB and one for root
 
 #### Warning 
 ```
-This script only works on physical machines, don't try to use it in VMs
+This script only works with UEFI boot mode, don't try to use it with Legacy boot mode
 ```
