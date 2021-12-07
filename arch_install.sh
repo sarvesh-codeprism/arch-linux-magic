@@ -56,7 +56,7 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      fzf man-db xwallpaper python-pywal youtube-dl unclutter xclip maim \
      zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
-     vim arc-gtk-theme rsync firefox dash \
+     vim imwheel arc-gtk-theme rsync firefox dash \
      picom polkit-gnome libnotify dunst slock jq \
      dhcpcd networkmanager rsync pamixer
 
