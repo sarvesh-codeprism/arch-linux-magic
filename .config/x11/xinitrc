@@ -8,5 +8,6 @@ dunst &
 xset r rate 300 50 &
 sxhkd &
 unclutter &
+~/.config/mouse.sh &
 
 exec dwm > /dev/null 2>&1
