@@ -9,7 +9,7 @@ update_memory () {
 }
 
 update_time () { 
-	time="$(date "+[  %a %d %b ] [  %I:%M %P ]")" 
+	time="$(date "+  %a %d %b    %I:%M %P ")" 
 }
 
 update_bat () { 
@@ -40,7 +40,7 @@ update_vol () {
 update_vol
 
 display () { 
-	xsetroot -name "[  $memory ] [ $vol ] $time [ $bat ] "
+	xsetroot -name "  $memory   $vol  $time  $bat  "
 }
 
 # Handling receiving signal
