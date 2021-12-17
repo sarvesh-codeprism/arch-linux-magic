@@ -10,7 +10,7 @@ read drive
 cfdisk $drive 
 echo "Enter the linux partition: "
 read partition
-mkfs.btrfs $partition -f
+mkfs.ext4 $partition -f
 read -p "Did you also create efi partition? [y/n]" answer
 if [[ $answer = y ]] ; then
   echo "Enter EFI partition: "
