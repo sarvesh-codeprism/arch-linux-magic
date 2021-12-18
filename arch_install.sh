@@ -10,7 +10,7 @@ read drive
 cfdisk $drive 
 echo "Enter the linux partition: "
 read partition
-mkfs.ext4 $partition -f
+mkfs.ext4 $partition
 read -p "Did you also create efi partition? [y/n]" answer
 if [[ $answer = y ]] ; then
   echo "Enter EFI partition: "
@@ -20,7 +20,7 @@ fi
 mount $partition /mnt 
 pacstrap /mnt base base-devel linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
-sed '1,/^#part2$/d' arch_install.sh > /mnt/arch_install2.sh
+sed '1,/^#part2$/d' arch-linux-magic > /mnt/arch_install2.sh
 chmod +x /mnt/arch_install2.sh
 arch-chroot /mnt ./arch_install2.sh
 exit 

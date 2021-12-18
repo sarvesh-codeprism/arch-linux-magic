@@ -11,12 +11,7 @@ curl -LO git.io/arch-linux-magic
 
 ### Step 2
 ```sh
-mv arch-linux-magic arch_install.sh
-```
-
-### Step 3
-```sh
-bash arch_install.sh
+sh arch-linux-magic
 ```
 
 `
