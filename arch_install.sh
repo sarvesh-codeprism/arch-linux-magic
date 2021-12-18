@@ -40,7 +40,7 @@ echo "::1             localhost" >> /etc/hosts
 echo "127.0.1.1       $hostname.localdomain $hostname" >> /etc/hosts
 mkinitcpio -P
 passwd
-pacman --noconfirm -S grub efibootmgr os-prober
+pacman --noconfirm -S grub efibootmgr os-prober cowsay
 echo "Enter EFI partition: " 
 read efipartition
 mkdir /boot/efi
