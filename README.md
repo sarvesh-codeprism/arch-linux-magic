@@ -5,13 +5,13 @@
 |![Screenshot 1](./ss/ss-1.jpg) | ![Screenshot 2](./ss/ss-2.jpg) |
 
 ### Step 1
-```sh
+```bash
 curl -LO git.io/arch-linux-magic
 ```
 
 ### Step 2
-```sh
-sh arch-linux-magic
+```bash
+bash arch-linux-magic
 ```
 
 `
