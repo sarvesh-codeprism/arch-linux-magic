@@ -43,6 +43,7 @@ echo "127.0.1.1       $hostname.localdomain $hostname" >> /etc/hosts
 mkinitcpio -P
 passwd
 pacman --noconfirm -S grub efibootmgr os-prober
+lsblk
 echo "Enter EFI partition: " 
 read efipartition
 mkdir /boot/efi
@@ -92,13 +93,13 @@ exit
 
 #part3
 read -p "Do you want to setup username and email address for git ? [y/n] " ans
-if [[ $ans = y ]] ; then
+if [ $ans = y ] ; then
   read -p "Enter a username: " name
   read -p "Enter an email address: " email
   git config --global user.name $name
   git config --global user.email $email
   read -p "Do you want to generate ssh key ? [y/n] " key
-  if [[ $key = y ]] ; then
+  if [ $key = y ] ; then
     ssh-keygen -t ed25519 -C $email
   fi
 fi
