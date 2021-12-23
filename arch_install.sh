@@ -42,7 +42,7 @@ echo "::1             localhost" >> /etc/hosts
 echo "127.0.1.1       $hostname.localdomain $hostname" >> /etc/hosts
 mkinitcpio -P
 passwd
-pacman --noconfirm -S grub efibootmgr os-prober cowsay
+pacman --noconfirm -S grub efibootmgr os-prober
 echo "Enter EFI partition: " 
 read efipartition
 mkdir /boot/efi
@@ -60,8 +60,17 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
      vim imwheel arc-gtk-theme rsync firefox dash \
-     picom polkit-gnome libnotify dunst slock jq \
-     dhcpcd networkmanager rsync pamixer
+     xcompmgr polkit-gnome libnotify dunst slock jq \
+     dhcpcd networkmanager rsync pamixer cowsay
+
+read -p "Select your GPU [ 1=>Intel 2=>AMD 3=>vmware ]" gpu
+if [[ $gpu = 1 ]] ; then
+  pacman -S xf86-video-intel
+elif [[ $gpu = 2 ]] ; then
+  pacman -S xf86-video-amdgpu
+elif [[ $gpu = 3 ]] ; then
+  pacman -S xf86-video-vmware
+fi
 
 systemctl enable NetworkManager.service 
 rm /bin/sh
@@ -90,9 +99,12 @@ git clone --depth=1 --branch st https://github.com/sarveshspatil111/arch-linux-m
 sudo make -C ~/.local/src/st install
 git clone --depth=1 --branch dmenu https://github.com/sarveshspatil111/arch-linux-magic.git ~/.local/src/dmenu
 sudo make -C ~/.local/src/dmenu install
-git clone --depth=1 --branch baph https://github.com/sarveshspatil111/arch-linux-magic.git ~/.local/src/baph
-sudo make -C ~/.local/src/baph install
-baph -inN libxft-bgra-git update-grub
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+cd ..
+rm -rf yay-bin
+yay -S libxft-bgra-git update-grub
 update-grub
 
 ln -s ~/.config/x11/xinitrc .xinitrc
