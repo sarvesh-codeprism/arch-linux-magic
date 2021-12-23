@@ -8,10 +8,12 @@ lsblk
 echo "Enter the drive: "
 read drive
 cfdisk $drive 
+lsblk
 echo "Enter the linux partition: "
 read partition
 mkfs.ext4 $partition
 read -p "Did you also create efi partition? [y/n]" answer
+lsblk
 if [[ $answer = y ]] ; then
   echo "Enter EFI partition: "
   read efipartition
@@ -47,7 +49,8 @@ mkdir /boot/efi
 mount $efipartition /boot/efi 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ARCH
 sed -i 's/quiet/pci=noaer/g' /etc/default/grub
-sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
+# Uncomment the above line, if you don't want grub timeout
+# sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0/g' /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 
 pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xbacklight xorg-xprop \
@@ -89,7 +92,8 @@ git clone --depth=1 --branch dmenu https://github.com/sarveshspatil111/arch-linu
 sudo make -C ~/.local/src/dmenu install
 git clone --depth=1 --branch baph https://github.com/sarveshspatil111/arch-linux-magic.git ~/.local/src/baph
 sudo make -C ~/.local/src/baph install
-baph -inN libxft-bgra-git
+baph -inN libxft-bgra-git update-grub
+update-grub
 
 ln -s ~/.config/x11/xinitrc .xinitrc
 ln -s ~/.config/shell/profile .zprofile
