@@ -59,17 +59,19 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      fzf man-db xwallpaper python-pywal youtube-dl unclutter xclip maim \
      zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
-     vim imwheel arc-gtk-theme rsync firefox dash \
+     neovim imwheel arc-gtk-theme rsync dash \
      xcompmgr polkit-gnome libnotify dunst slock jq \
      dhcpcd networkmanager rsync pamixer cowsay
 
-read -p "Select your GPU [ 1=>Intel 2=>AMD 3=>vmware ]" gpu
+read -p "Select your GPU [ 1=>Intel 2=>AMD 3=>Nvidia 4=>vmware ] " gpu
 if [[ $gpu = 1 ]] ; then
-  pacman -S xf86-video-intel
+  pacman -S --noconfirm xf86-video-intel
 elif [[ $gpu = 2 ]] ; then
-  pacman -S xf86-video-amdgpu
+  pacman -S --noconfirm xf86-video-amdgpu
 elif [[ $gpu = 3 ]] ; then
-  pacman -S xf86-video-vmware
+  pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
+elif [[ $gpu = 4 ]] ; then
+  pacman -S --noconfirm xf86-video-vmware
 fi
 
 systemctl enable NetworkManager.service 
@@ -89,6 +91,17 @@ su -c $ai3_path -s /bin/sh $username
 exit
 
 #part3
+read -p "Do you want to setup username and email address for git ? [y/n] " ans
+if [[ $ans = y ]] ; then
+  read -p "Enter a username: " name
+  read -p "Enter an email address: " email
+  git config --global user.name $name
+  git config --global user.email $email
+  read -p "Do you want to generate ssh key ? [y/n] " key
+  if [[ $key = y ]] ; then
+    ssh-keygen -t ed25519 -C $email
+  fi
+fi
 cd $HOME
 git clone --separate-git-dir=$HOME/.dotfiles --branch dotfiles https://github.com/sarveshspatil111/arch-linux-magic.git tmpdotfiles
 rsync --recursive --verbose --exclude '.git' tmpdotfiles/ $HOME/
@@ -104,7 +117,7 @@ cd yay-bin
 makepkg -si
 cd ..
 rm -rf yay-bin
-yay -S libxft-bgra-git update-grub
+yay -S libxft-bgra-git update-grub brave-bin
 update-grub
 
 ln -s ~/.config/x11/xinitrc .xinitrc
