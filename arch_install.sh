@@ -113,12 +113,9 @@ git clone --depth=1 --branch st https://github.com/sarveshspatil111/arch-linux-m
 sudo make -C ~/.local/src/st install
 git clone --depth=1 --branch dmenu https://github.com/sarveshspatil111/arch-linux-magic.git ~/.local/src/dmenu
 sudo make -C ~/.local/src/dmenu install
-git clone https://aur.archlinux.org/yay-bin.git
-cd yay-bin
-makepkg -si
-cd ..
-rm -rf yay-bin
-yay -S libxft-bgra-git update-grub brave-bin
+git clone --depth=1 --branch baph https://github.com/sarveshspatil111/arch-linux-magic.git ~/.local/src/baph
+sudo make -C ~/.local/src/baph install
+baph -inN libxft-bgra-git update-grub
 update-grub
 
 ln -s ~/.config/x11/xinitrc .xinitrc
