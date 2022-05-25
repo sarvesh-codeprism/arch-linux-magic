@@ -60,7 +60,7 @@ pacman -S --noconfirm xorg-server xorg-xinit xorg-xkill xorg-xsetroot xorg-xback
      fzf man-db xwallpaper python-pywal youtube-dl unclutter xclip maim \
      zip unzip unrar p7zip xdotool papirus-icon-theme brightnessctl  \
      dosfstools ntfs-3g git sxhkd zsh pipewire pipewire-pulse \
-     neovim imwheel arc-gtk-theme rsync dash \
+     vim imwheel arc-gtk-theme rsync dash \
      xcompmgr polkit-gnome libnotify dunst slock jq \
      dhcpcd networkmanager rsync pamixer cowsay
 
@@ -110,12 +110,15 @@ rm -r tmpdotfiles
 git clone --depth=1 --branch dwm https://github.com/sarveshspatil111/arch-linux-magic.git ~/.local/src/dwm
 sudo make -C ~/.local/src/dwm install
 git clone --depth=1 --branch st https://github.com/sarveshspatil111/arch-linux-magic.git ~/.local/src/st
+sudo git config --global --add safe.directory ~/.local/src/st
 sudo make -C ~/.local/src/st install
 git clone --depth=1 --branch dmenu https://github.com/sarveshspatil111/arch-linux-magic.git ~/.local/src/dmenu
 sudo make -C ~/.local/src/dmenu install
-git clone --depth=1 --branch baph https://github.com/sarveshspatil111/arch-linux-magic.git ~/.local/src/baph
-sudo make -C ~/.local/src/baph install
-baph -inN libxft-bgra-git update-grub
+git clone https://aur.archlinux.org/pikaur.git
+cd pikaur
+makepkg -fsri
+cd
+pikaur -S libxft-bgra-git yt-dlp-drop-in update-grub
 update-grub
 
 ln -s ~/.config/x11/xinitrc .xinitrc
